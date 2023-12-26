@@ -1,12 +1,14 @@
+#setwd("/Volumes/GoogleDrive/My Drive/Projects/Code/Democracy v GDP/")
+
 library(ggplot2)
 library(dplyr)
 library(writexl)
 
 #importing IMF for population and GDP
-imf <- read.delim("/Volumes/GoogleDrive/My Drive/Projects/Code/Democracy v GDP/WEOOct2023all (3).xls")
+imf <- read.delim("WEOOct2023all.xls")
 
 #importing EIU for democracy index
-eiu <- read.csv("/Volumes/GoogleDrive/My Drive/Projects/Code/Democracy v GDP/democracy-index-eiu.csv")
+eiu <- read.csv("democracy-index-eiu.csv")
 
 #filtering down imf to just give gdp and population
 imf <- imf %>%
@@ -48,5 +50,6 @@ ggplot(combined, aes(x = democracy, y = gdp, size = population)) +
        size = "Population")
 
 #save table and make scatterplot pretty
-file_path <- file.path("/Volumes/GoogleDrive/My Drive/Projects/Code/Democracy v GDP/", "dataset.csv")
+file_path <- file.path("dataset.csv")
 write.csv(combined, file = file_path, row.names = FALSE)
+
